@@ -1,5 +1,7 @@
 import React from 'react';
 import MyContext from './MyContext';
+import Proptypes from 'prop-types';
+
 
 class Provider extends React.Component {
   constructor(props) {
@@ -43,16 +45,19 @@ changeSignal(payload) {
       ...this.state,
       moveCar: this.moveCar,
       changeSignal: this.changeSignal,
-    }
+    };
 
     const { children } = this.props;
-    return(
-      <MyContext.Provider value={context}>
+    return (
+      <MyContext.Provider value={ context }>
         {children}
       </MyContext.Provider>
     );
   }
 }
 
+Provider.propTypes = {
+  children: Proptypes.node.isRequired,
+};
 
 export default Provider;
